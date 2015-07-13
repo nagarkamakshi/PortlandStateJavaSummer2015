@@ -8,6 +8,25 @@ import static com.sandwich.koan.constant.KoanConstants.__;
 import static com.sandwich.util.Assert.assertEquals;
 
 public class AboutTryWithResources {
+    class AutoClosableResource implements AutoCloseable{
+        public void foo() throws WorkException{
+            throw new WorkException("Exception thrown while working");
+        }
+        public void close() throws CloseException{
+            throw new CloseException("Exception thrown while closing");
+        }
+    }
+
+    class WorkException extends Exception {
+        public WorkException(String message) {
+            super(message);
+        }
+    }
+
+    class CloseException extends Exception {
+        public CloseException(String message) {
+            super(message);
+        }
 
     @Koan
     public void lookMaNoClose() {
@@ -25,18 +44,21 @@ public class AboutTryWithResources {
         } catch (IOException e) {
             line = "error";
         }
-        assertEquals(line, __);
+        assertEquals(line, "first line");
     }
 
     @Koan
     public void lookMaNoCloseWithException() throws IOException {
-        String line;
+        String line = "no need to close readers";
         try (BufferedReader br =
                      new BufferedReader(
                              new FileReader("I do not exist!"))) {
             line = br.readLine();
         }
-        assertEquals(line, __);
+        catch(FileNotFoundException e){
+            line = "no more leaking!";
+        }
+        assertEquals(line, "I do not exist");
     }
 
     @Koan
@@ -59,7 +81,7 @@ public class AboutTryWithResources {
         }catch (IOException e) {
             line = "error";
         }
-        assertEquals(line, __);
+        assertEquals(line, "I do not exist! first line\n second line");
     }
 
     @Koan
@@ -83,24 +105,4 @@ public class AboutTryWithResources {
         }
     }
 }
-
-class AutoClosableResource implements AutoCloseable{
-    public void foo() throws WorkException{
-        throw new WorkException("Exception thrown while working");
-    }
-    public void close() throws CloseException{
-        throw new CloseException("Exception thrown while closing");
-    }
-}
-
-class WorkException extends Exception {
-    public WorkException(String message) {
-        super(message);
-    }
-}
-
-class CloseException extends Exception {
-    public CloseException(String message) {
-        super(message);
-    }
 }

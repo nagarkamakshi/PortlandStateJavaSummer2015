@@ -1,2 +1,3 @@
 edu\pdx\cs410J\kamakshi\People.class
+edu\pdx\cs410J\kamakshi\IllegalStudentArgumentException.class
 edu\pdx\cs410J\kamakshi\Student.class

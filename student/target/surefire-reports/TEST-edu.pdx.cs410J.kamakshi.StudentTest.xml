@@ -5,7 +5,7 @@
     <property name="sun.boot.library.path" value="C:\Progra~2\Java\jdk1.8.0_40\jre\bin"/>
     <property name="java.vm.version" value="25.40-b25"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
-    <property name="maven.multiModuleProjectDirectory" value="C:\Users\vaio\student"/>
+    <property name="maven.multiModuleProjectDirectory" value="C:\Users\vaio\Documents\GitHub\PortlandStateJavaSummer2015\student"/>
     <property name="java.vendor.url" value="http://java.oracle.com/"/>
     <property name="path.separator" value=";"/>
     <property name="guice.disable.misplaced.annotation.check" value="true"/>
@@ -16,7 +16,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.os.patch.level" value="Service Pack 1"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="user.dir" value="C:\Users\vaio\student"/>
+    <property name="user.dir" value="C:\Users\vaio\Documents\GitHub\PortlandStateJavaSummer2015\student"/>
     <property name="java.runtime.version" value="1.8.0_40-b25"/>
     <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
     <property name="java.endorsed.dirs" value="C:\Progra~2\Java\jdk1.8.0_40\jre\lib\endorsed"/>
@@ -29,7 +29,7 @@
     <property name="os.name" value="Windows 7"/>
     <property name="classworlds.conf" value="C:\Program Files (x86)\Apache\apache-maven-3.3.1\bin\..\bin\m2.conf"/>
     <property name="sun.jnu.encoding" value="Cp1252"/>
-    <property name="java.library.path" value="C:\Progra~2\Java\jdk1.8.0_40\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Program Files (x86)\Java\jdk1.8.0_40\bin;C:\cygwin64\bin;C:\Program Files (x86)\Apache\apache-maven-3.3.1\bin;C:\Progra~2\Java\jdk1.8.0_40\bin;C:\Program Files (x86)\Apache\apache-maven-3.3.1\bin;."/>
+    <property name="java.library.path" value="C:\Progra~2\Java\jdk1.8.0_40\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Program Files (x86)\Java\jdk1.8.0_40\bin;C:\cygwin64\bin;C:\Program Files (x86)\Apache\apache-maven-3.3.1\bin;C:\Program Files\OpenVPN\bin;C:\Program Files (x86)\Git\cmd;C:\Progra~2\Java\jdk1.8.0_40\bin;C:\Program Files (x86)\Apache\apache-maven-3.3.1\bin;."/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.class.version" value="52.0"/>
     <property name="sun.management.compiler" value="HotSpot Tiered Compilers"/>
