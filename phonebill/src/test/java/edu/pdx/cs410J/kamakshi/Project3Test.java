@@ -2,7 +2,6 @@ package edu.pdx.cs410J.kamakshi;
 
 import edu.pdx.cs410J.InvokeMainTestCase;
 import junit.framework.TestCase;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import static junit.framework.Assert.assertEquals;
@@ -11,23 +10,21 @@ import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.StringContains.containsString;
 
 /**
- * Created by vaio on 09-07-2015.
+ * Created by vaio on 16-07-2015.
  */
-public class Project2Test extends InvokeMainTestCase {
-
-
+public class Project3Test extends InvokeMainTestCase {
 
     /**
      * Invokes the main method of {@link Project1} with the given arguments.
      */
     private MainMethodResult invokeMain(String... args) {
-        return invokeMain( Project2.class, args );
+        return invokeMain( Project3.class, args );
     }
 
     private void assertErrorMessageExitCodeAndUsage(MainMethodResult result, String errorMessage) {
         assertThat(result.getExitCode(), equalTo(1));
         assertThat(result.getErr(), containsString(errorMessage));
-        assertThat(result.getErr(), containsString(Project2.USAGE_MESSAGE));
+        assertThat(result.getErr(), containsString(Project3.USAGE_MESSAGE));
     }
 
     /**
@@ -37,7 +34,7 @@ public class Project2Test extends InvokeMainTestCase {
     public void testNoCommandLineArguments() {
         MainMethodResult result = invokeMain();
         assertEquals(new Integer(1), result.getExitCode());
-        assertThat(result.getErr(), containsString(Project2.USAGE_MESSAGE));
+        assertThat(result.getErr(), containsString("Missing command line arguments"));
     }
     @Test
     public void testReadMeWorks(){
@@ -50,6 +47,27 @@ public class Project2Test extends InvokeMainTestCase {
         MainMethodResult result = invokeMain("-print");
         assertEquals(new Integer(1), result.getExitCode());
     }
+
+    @Test
+    public void testTestFileWorks(){
+        MainMethodResult result = invokeMain("-textFile");
+        assertThat(result.getErr(), containsString("Missing FileName"));
+        assertEquals(new Integer(1), result.getExitCode());
+    }
+    @Test
+    public void testPrettyWorks(){
+        MainMethodResult result = invokeMain("-pretty");
+        assertThat(result.getErr(), containsString("Give file name or -"));
+        assertEquals(new Integer(1), result.getExitCode());
+    }
+
+
+
+
+
+
+
+
     @Test
     public void testBothPrintAndReadMeWorks(){
         MainMethodResult result = invokeMain("-print","-README");
@@ -69,7 +87,7 @@ public class Project2Test extends InvokeMainTestCase {
         assertEquals(new Integer(1), result.getExitCode());
     }
     @Test
-    public void testNoArgumentAfterPrintExitWithErro(){
+    public void testNoArgumentAfterPrintExitWithError(){
         MainMethodResult result = invokeMain("-print","Jams","jasdjka");
         assertEquals(new Integer(1), result.getExitCode());
     }
@@ -140,7 +158,7 @@ public class Project2Test extends InvokeMainTestCase {
     public void testTextFileCommandWithReadMe(){
         MainMethodResult result = invokeMain("-textFile","-README");
         //assertEquals(new Integer(1), result.getExitCode());
-       assertThat(result.getOut(),containsString("This is a README for java Project2 : Storing a Phone Bill in a Text File at Portland State University Summer 2015, created by Kamakshi Nagar."));
+        assertThat(result.getOut(),containsString("This is a README for java Project2 : Storing a Phone Bill in a Text File at Portland State University Summer 2015, created by Kamakshi Nagar."));
     }
     @Test
     public void testTextFileArgumentsExitWithError(){
@@ -155,8 +173,14 @@ public class Project2Test extends InvokeMainTestCase {
     }
     @Test
     public void testBothStartTimeAndEndTimeWork(){
-        MainMethodResult result = invokeMain("kama","999-999-9999","000-000-0000","1/15/2015","19:39","Jams","kama");
+        MainMethodResult result = invokeMain("kama","999-999-9999","000-000-0000","1/15/2015","09:39","Jams","kama");
         assertThat(result.getErr(),containsString("Invalid Date Time"));
+        assertEquals(new Integer(1), result.getExitCode());
+    }
+    @Test
+    public void testChangedStartTimeAndEndTimeWork(){
+        MainMethodResult result = invokeMain("kama","999-999-9999","000-000-0000","1/15/2015","09:39","pm","1/15/2015","09:39","pm");
+        assertThat(result.getErr(),containsString("valid Date Time"));
         assertEquals(new Integer(1), result.getExitCode());
     }
     @Test
@@ -227,7 +251,4 @@ public class Project2Test extends InvokeMainTestCase {
         assertEquals(result.getExitCode(), new Integer(1));
 
     }
-
-
-
 }

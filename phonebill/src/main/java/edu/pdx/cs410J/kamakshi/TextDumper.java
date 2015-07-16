@@ -54,7 +54,7 @@ public class TextDumper implements PhoneBillDumper {
         sbr.append("\n Phone Bill: "+abstractPhoneBill.toString());
 
         //Write the String Buffer to print writer
-        pw.print(sbr.toString());
+        pw.append(sbr.toString());
 
         //Flush and Close the print writer
         pw.flush();

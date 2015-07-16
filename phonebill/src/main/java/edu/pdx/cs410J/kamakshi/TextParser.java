@@ -29,7 +29,6 @@ public class TextParser implements PhoneBillParser {
     public TextParser(String fileName) throws FileNotFoundException {
         this(new File(fileName));
     }
-
     /**
      * Creates a new text parser that reads its input from the given
      * file.

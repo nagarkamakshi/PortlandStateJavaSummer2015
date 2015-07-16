@@ -1,42 +1,42 @@
 package edu.pdx.cs410J.kamakshi;
 
-import edu.pdx.cs410J.AbstractPhoneBill;
 import edu.pdx.cs410J.ParserException;
 
 import java.io.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 /**
- * The main class for the Project2 CS410J: Storing Your Phone Bill in a Text File.
+ * The main class for the Project3 CS410J: Pretty Printing a Phone Bill.
  *
  * @author Kamakshi Nagar
  */
-public class Project2 {
+public class Project3 {
 
-    static final String USAGE_MESSAGE = "args are (in this order):\n" +
+    static final String USAGE_MESSAGE = "args are (in this order)\n" +
             "  customer \n" +
             "  callerNumber : nnn-nnn-nnnn \n" +
             "  calleeNumber : nnn-nnn-nnnn \n" +
             "  startTime : MM/dd/yyyy HH:mm\n" +
             "  endTime : MM/dd/yyyy HH:mm\n"+
-            "Options are (options may appear in this order):\n " +
+            "Options are (options may appear in this order)\n " +
+            "-pretty file \n"+
             "-textFile filename \n "+
             "-print \n" +
             "-README \n" ;
+
     /**
      * Main program that parses the command line arguments, creates a
      * <code>PhoneCall</code>, and prints a description of the call to
      * standard out by invoking PhoneCall <code>toString</code> method.
      * Also Write/Read to/from a file given as command line arguments for
      * command -textFile.
+     * A -pretty Command for pretty printing the PhoneCall from the file.
      *
      * @throws IllegalArgumentException
      */
-    public static void main(String[] args) throws IllegalArgumentException {
+    public static void main(String[] args) throws IllegalArgumentException{
 
         PhoneBill pb = new PhoneBill();
         PhoneCall pc = new PhoneCall();
@@ -55,8 +55,9 @@ public class Project2 {
                     printErrorMessageAndExit("Missing Customer Name");
                 } else if (args[0].equals("-textFile")) {
                     printErrorMessageAndExit("Missing FileName");
-                } else
-                    printErrorMessageAndExit("Missing Caller Number");
+                } else if (args[0].equals("-pretty")){
+                    printErrorMessageAndExit("Give file name or -");
+                } else printErrorMessageAndExit("Missing Caller Number");
                 break;
             case 2:
                 for (int i = 0; i < 2; i++) {
@@ -105,23 +106,23 @@ public class Project2 {
                 if (args[0].equals("-print")) printErrorMessageAndExit("Missing EndTime");
             case 8:
                 if (args[0].equals("-textFile")) printErrorMessageAndExit("Missing EndTime");
-           default:
-               int i = 0;
-            if(args[0].startsWith("-")){
-                if (args[0].equals("-print")){
-                    if (args.length>8){ printErrorMessageAndExit("Extraneous Argument");}
-                    i = 1; print=true;}
-                else if (args[0].equals("-textFile")){
+            default:
+                int i = 0;
+                if(args[0].startsWith("-")){
+                    if (args[0].equals("-print")){
+                        if (args.length>8){ printErrorMessageAndExit("Extraneous Argument");}
+                        i = 1; print=true;}
+                    else if (args[0].equals("-textFile")){
                         if (args.length>9){ printErrorMessageAndExit("Extraneous Argument");}
-                    i=2; write = true; fileName= args[i-1];
+                        i=2; write = true; fileName= args[i-1];
                     } else printErrorMessageAndExit("Invalid Command line Option");
-            }else if (args.length>7){printErrorMessageAndExit("Extraneous Argument");}
+                }else if (args.length>7){printErrorMessageAndExit("Extraneous Argument");}
 
-            pb.customerName = args[i];
-            pc.callerNumber = validatePhoneNumber(args[i + 1]);
-            pc.calleeNumber = validatePhoneNumber(args[i + 2]);
-            pc.startTimeString = validateTime(args[i + 3] + " " + args[i + 4]);
-            pc.endTimeString = validateTime(args[i + 5] + " " + args[i + 6]);
+                pb.customerName = args[i];
+                pc.callerNumber = validatePhoneNumber(args[i + 1]);
+                pc.calleeNumber = validatePhoneNumber(args[i + 2]);
+                pc.startTimeString = validateDateTime(args[i + 3] + " " + args[i + 4]);
+                pc.endTimeString = validateDateTime(args[i + 5] + " " + args[i + 6]);
         }
 
         if(print== true) {printPhoneCall(pc,pb);}
@@ -207,7 +208,7 @@ public class Project2 {
      * @return validated <code>String</code> dateTime
      *
      */
-    private static String validateTime(String dateTime) {
+    private static String validateDateTime(String dateTime) {
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm");
         dateFormat.setLenient(false);
