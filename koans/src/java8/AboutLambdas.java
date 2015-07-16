@@ -11,8 +11,9 @@ import static com.sandwich.koan.constant.KoanConstants.__;
 public class AboutLambdas {
 
     interface Caps {
-        String capitalize(String name);
+        public String capitalize(String name);
     }
+
     String fieldFoo = "Lambdas";
 
     @Override

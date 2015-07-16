@@ -1,3 +1,4 @@
+
 package java8;
 
 import com.sandwich.koan.Koan;
@@ -7,13 +8,13 @@ import static com.sandwich.koan.constant.KoanConstants.__;
 
 
 public class AboutMultipleInheritance {
-
+    
     interface Human {
         default String sound() {
             return "hello";
         }
-    }
 
+    }
     interface Bull {
         default String sound() {
             return "moo";
@@ -27,14 +28,15 @@ public class AboutMultipleInheritance {
     }
 
 
-    class Minotaur implements Human, Bull {
-
+    class Minotaur implements Human, Bull{
         //both interfaces implement same default method
         //has to be overridden
         @Override
-        public String sound() {
+        public String sound(){
             return Bull.super.sound();
         }
+
     }
+
 }
 

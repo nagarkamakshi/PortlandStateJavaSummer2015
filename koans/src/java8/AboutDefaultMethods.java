@@ -46,4 +46,5 @@ public class AboutDefaultMethods {
         assertEquals(StringUtil.enclose("me"), "[me]");
     }
 
+
 }

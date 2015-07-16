@@ -1,40 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="744fbffb-d3cc-466c-a0f3-0be6103c0bd3" name="Default" comment="Koans for CS401J Advanced Java Programming summer 2015 at Portland State University.">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/SerializeFile" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/file.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" />
-      <change type="DELETED" beforePath="C:\Users\vaio\Documents\GitHub\PortlandStateJavaSummer2015\student\target\maven-status\maven-compiler-plugin\compile\default-compile\inputFiles.lst" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\vaio\Documents\GitHub\PortlandStateJavaSummer2015\student\target\maven-status\maven-compiler-plugin\testCompile\default-testCompile\inputFiles.lst" afterPath="" />
+    <list default="true" id="744fbffb-d3cc-466c-a0f3-0be6103c0bd3" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../phonebill/src/main/java/edu/pdx/cs410J/kamakshi/PrettyPrinter.java" />
+      <change type="DELETED" beforePath="C:\Users\vaio\Documents\GitHub\PortlandStateJavaSummer2015\koans\file.txt" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/intermediate/AboutDates.java" afterPath="$PROJECT_DIR$/src/intermediate/AboutDates.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java8/AboutDefaultMethods.java" afterPath="$PROJECT_DIR$/src/java8/AboutDefaultMethods.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java7/AboutDiamondOperator.java" afterPath="$PROJECT_DIR$/src/java7/AboutDiamondOperator.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java8/AboutLambdas.java" afterPath="$PROJECT_DIR$/src/java8/AboutLambdas.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java8/AboutLocalTime.java" afterPath="$PROJECT_DIR$/src/java8/AboutLocalTime.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java8/AboutMultipleInheritance.java" afterPath="$PROJECT_DIR$/src/java8/AboutMultipleInheritance.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java8/AboutOptional.java" afterPath="$PROJECT_DIR$/src/java8/AboutOptional.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java8/AboutStreams.java" afterPath="$PROJECT_DIR$/src/java8/AboutStreams.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java7/AboutTryWithResources.java" afterPath="$PROJECT_DIR$/src/java7/AboutTryWithResources.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../phonebill/src/main/java/edu/pdx/cs410J/kamakshi/PhoneBill.java" afterPath="$PROJECT_DIR$/../phonebill/src/main/java/edu/pdx/cs410J/kamakshi/PhoneBill.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../phonebill/src/main/java/edu/pdx/cs410J/kamakshi/PhoneCall.java" afterPath="$PROJECT_DIR$/../phonebill/src/main/java/edu/pdx/cs410J/kamakshi/PhoneCall.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../phonebill/src/main/java/edu/pdx/cs410J/kamakshi/Project1.java" afterPath="$PROJECT_DIR$/../phonebill/src/main/java/edu/pdx/cs410J/kamakshi/Project1.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../phonebill/src/test/java/edu/pdx/cs410J/kamakshi/Project1Test.java" afterPath="$PROJECT_DIR$/../phonebill/src/test/java/edu/pdx/cs410J/kamakshi/Project1Test.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../phonebill/src/main/java/edu/pdx/cs410J/kamakshi/Project2.java" afterPath="$PROJECT_DIR$/../phonebill/src/main/java/edu/pdx/cs410J/kamakshi/Project2.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../phonebill/src/test/java/edu/pdx/cs410J/kamakshi/Project2Test.java" afterPath="$PROJECT_DIR$/../phonebill/src/test/java/edu/pdx/cs410J/kamakshi/Project2Test.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../student/target/surefire-reports/TEST-edu.pdx.cs410J.kamakshi.PeopleTest.xml" afterPath="$PROJECT_DIR$/../student/target/surefire-reports/TEST-edu.pdx.cs410J.kamakshi.PeopleTest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../student/target/surefire-reports/TEST-edu.pdx.cs410J.kamakshi.StudentTest.xml" afterPath="$PROJECT_DIR$/../student/target/surefire-reports/TEST-edu.pdx.cs410J.kamakshi.StudentTest.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../phonebill/src/main/java/edu/pdx/cs410J/kamakshi/TextDumper.java" afterPath="$PROJECT_DIR$/../phonebill/src/main/java/edu/pdx/cs410J/kamakshi/TextDumper.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../phonebill/src/main/java/edu/pdx/cs410J/kamakshi/TextParser.java" afterPath="$PROJECT_DIR$/../phonebill/src/main/java/edu/pdx/cs410J/kamakshi/TextParser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../student/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterPath="$PROJECT_DIR$/../student/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../student/target/surefire-reports/edu.pdx.cs410J.kamakshi.PeopleTest.txt" afterPath="$PROJECT_DIR$/../student/target/surefire-reports/edu.pdx.cs410J.kamakshi.PeopleTest.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../student/target/surefire-reports/edu.pdx.cs410J.kamakshi.StudentTest.txt" afterPath="$PROJECT_DIR$/../student/target/surefire-reports/edu.pdx.cs410J.kamakshi.StudentTest.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../student/target/maven-archiver/pom.properties" afterPath="$PROJECT_DIR$/../student/target/maven-archiver/pom.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../student/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../student/.idea/workspace.xml" />
     </list>
     <ignored path="koans.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -61,11 +44,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="AboutTryWithResources.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/java7/AboutTryWithResources.java">
+      <file leaf-file-name="AboutLambdas.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/java8/AboutLambdas.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.57349396">
-              <caret line="19" column="43" selection-start-line="19" selection-start-column="43" selection-end-line="19" selection-end-column="43" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AboutDates.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/intermediate/AboutDates.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.7768014">
+              <caret line="49" column="42" selection-start-line="49" selection-start-column="42" selection-end-line="49" selection-end-column="42" />
               <folding />
             </state>
           </provider>
@@ -104,7 +97,6 @@
         <option value="$PROJECT_DIR$/src/intermediate/AboutAutoboxing.java" />
         <option value="$PROJECT_DIR$/src/intermediate/AboutCollections.java" />
         <option value="$PROJECT_DIR$/src/intermediate/AboutComparison.java" />
-        <option value="$PROJECT_DIR$/src/intermediate/AboutDates.java" />
         <option value="$PROJECT_DIR$/src/intermediate/AboutEquality.java" />
         <option value="$PROJECT_DIR$/src/intermediate/AboutFileIO.java" />
         <option value="$PROJECT_DIR$/src/intermediate/AboutInnerClasses.java" />
@@ -116,13 +108,14 @@
         <option value="$PROJECT_DIR$/src/java7/AboutStringsInSwitch.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/java7/AboutDiamondOperator.java" />
-        <option value="$PROJECT_DIR$/src/java8/AboutDefaultMethods.java" />
         <option value="$PROJECT_DIR$/src/java8/AboutOptional.java" />
         <option value="$PROJECT_DIR$/src/java8/AboutLocalTime.java" />
-        <option value="$PROJECT_DIR$/src/java8/AboutLambdas.java" />
         <option value="$PROJECT_DIR$/src/java8/AboutStreams.java" />
+        <option value="$PROJECT_DIR$/src/java8/AboutDefaultMethods.java" />
+        <option value="$PROJECT_DIR$/src/java8/AboutLambdas.java" />
         <option value="$PROJECT_DIR$/src/java8/AboutMultipleInheritance.java" />
         <option value="$PROJECT_DIR$/src/java7/AboutTryWithResources.java" />
+        <option value="$PROJECT_DIR$/src/intermediate/AboutDates.java" />
       </list>
     </option>
   </component>
@@ -198,24 +191,6 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java8" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="koans" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="koans" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -231,7 +206,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="advanced" />
+              <option name="myItemId" value="intermediate" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -244,7 +219,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../phonebill" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/FixIssue109.diff" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="recentsLimit" value="5" />
     <property name="restartRequiresConfirmation" value="true" />
@@ -571,41 +546,57 @@
       <workItem from="1435338386883" duration="1789000" />
       <workItem from="1435341570802" duration="687000" />
       <workItem from="1435358710922" duration="65114000" />
-      <workItem from="1436390260453" duration="30481000" />
+      <workItem from="1436390260453" duration="36859000" />
     </task>
+    <task id="LOCAL-00001" summary="Koans for CS401J Advanced Java Programming summer 2015 at Portland State University.">
+      <created>1436831744276</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1436831744276</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="111814000" />
+    <option name="totallyTimeSpent" value="118192000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1366" height="728" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998326" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.06197655" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25795645" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25795645" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.6086956" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.6080402" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22434916" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22434916" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.06197655" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -811,17 +802,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/advanced/AboutMocks.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-          <folding>
-            <element signature="e#1008#1120#0" expanded="false" />
-            <element signature="e#1119#1120#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/java7/AboutJava7LiteralsEnhancements.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -851,18 +831,6 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="16" column="47" selection-start-line="16" selection-start-column="47" selection-end-line="16" selection-end-column="47" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java8/AboutDefaultMethods.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.65794766">
-          <caret line="45" column="52" selection-start-line="45" selection-start-column="52" selection-end-line="45" selection-end-column="52" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1193#1194#0" expanded="false" />
-            <element signature="e#1255#1256#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -930,14 +898,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/intermediate/AboutDates.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.79275656">
-          <caret line="72" column="5" selection-start-line="72" selection-start-column="5" selection-end-line="72" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/intermediate/AboutComparison.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.3682092">
@@ -962,27 +922,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/java8/AboutLambdas.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.1549296">
-          <caret line="84" column="46" selection-start-line="84" selection-start-column="46" selection-end-line="84" selection-end-column="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java8/AboutMultipleInheritance.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6921529">
-          <caret line="37" column="5" selection-start-line="37" selection-start-column="5" selection-end-line="37" selection-end-column="5" />
-          <folding>
-            <element signature="e#729#730#0" expanded="true" />
-            <element signature="e#778#779#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/FixIssue109.diff">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="3.8028169">
@@ -991,10 +930,63 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/advanced/AboutMocks.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5903614">
+          <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java8/AboutDefaultMethods.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+          <folding>
+            <element signature="e#1193#1194#0" expanded="false" />
+            <element signature="e#1255#1256#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java8/AboutMultipleInheritance.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/file.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/java7/AboutTryWithResources.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.57349396">
-          <caret line="19" column="43" selection-start-line="19" selection-start-column="43" selection-end-line="19" selection-end-column="43" />
+        <state vertical-scroll-proportion="0.5817223">
+          <caret line="100" column="0" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java8/AboutLambdas.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/intermediate/AboutDates.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7768014">
+          <caret line="49" column="42" selection-start-line="49" selection-start-column="42" selection-end-line="49" selection-end-column="42" />
           <folding />
         </state>
       </provider>

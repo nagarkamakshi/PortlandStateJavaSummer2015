@@ -86,6 +86,7 @@ java7\AboutJava7LiteralsEnhancements.class
 beginner\AboutObjects.class
 intermediate\AboutEquality$Car.class
 intermediate\AboutSerialization.class
+java7\AboutTryWithResources$CloseException$AutoClosableResource.class
 beginner\AboutCasting$Parent.class
 intermediate\AboutInnerClasses$AnotherInnerClass.class
 beginner\AboutCasting.class

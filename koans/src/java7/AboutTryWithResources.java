@@ -28,6 +28,8 @@ public class AboutTryWithResources {
             super(message);
         }
 
+
+
     @Koan
     public void lookMaNoClose() {
         String str = "first line"
@@ -54,11 +56,10 @@ public class AboutTryWithResources {
                      new BufferedReader(
                              new FileReader("I do not exist!"))) {
             line = br.readLine();
-        }
-        catch(FileNotFoundException e){
+        }catch(FileNotFoundException e){
             line = "no more leaking!";
         }
-        assertEquals(line, "I do not exist");
+        assertEquals(line, "I do not exist!");
     }
 
     @Koan
@@ -94,7 +95,7 @@ public class AboutTryWithResources {
         } catch (CloseException e) {
             message += e.getMessage();
         }
-        assertEquals(message, __);
+        assertEquals(message,"Exception thrown while working Exception thrown while closing");
     }
 
 
