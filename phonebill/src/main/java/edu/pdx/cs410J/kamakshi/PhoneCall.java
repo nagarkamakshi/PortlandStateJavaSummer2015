@@ -1,19 +1,24 @@
 package edu.pdx.cs410J.kamakshi;
 
 import edu.pdx.cs410J.AbstractPhoneCall;
+import edu.pdx.cs410J.ParserException;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 import java.lang.Comparable;
+import java.util.Locale;
 
 /**
  * This Class inherits its super class AbstractPhoneCall And its methods.
  * It has call details which will be added to the customer's PhoneBill.
  *
+ *
  * @see PhoneBill
  * @author Kamakshi Nagar
  */
-public class PhoneCall  extends AbstractPhoneCall implements Comparable{
+public class PhoneCall  extends AbstractPhoneCall implements Comparable<PhoneCall>{
 
     /**
      * The <code>String</code>  are null.
@@ -26,7 +31,7 @@ public class PhoneCall  extends AbstractPhoneCall implements Comparable{
     public PhoneCall() {
     }
 
-    public PhoneCall(String calleeNumber, String callerNumber, String startTimeString, String endTimeString) {
+    public PhoneCall(String callerNumber, String calleeNumber, String startTimeString, String endTimeString) {
         this.calleeNumber = calleeNumber;
         this.callerNumber = callerNumber;
         this.startTimeString = startTimeString;
@@ -42,7 +47,9 @@ public class PhoneCall  extends AbstractPhoneCall implements Comparable{
     public String getCaller() {
         String phoneNumberPattern = "\\d{3}-\\d{3}-\\d{4}";
         if (!this.callerNumber.matches(phoneNumberPattern)){
-            System.err.println("Invalid caller number");}
+            System.err.println("Invalid caller number");
+            System.exit(1);
+        }
         return this.callerNumber;
     }
     /**
@@ -54,7 +61,7 @@ public class PhoneCall  extends AbstractPhoneCall implements Comparable{
     public String getCallee() {
         String phoneNumberPattern = "\\d{3}-\\d{3}-\\d{4}";
         if (!this.calleeNumber.matches(phoneNumberPattern)){
-            System.err.println("Invalid callee number");}
+            System.err.println("Invalid callee number"); System.exit(1);}
         return this.calleeNumber;
     }
     /**
@@ -64,7 +71,12 @@ public class PhoneCall  extends AbstractPhoneCall implements Comparable{
      */
     @Override
     public String getStartTimeString() {
-        return this.startTimeString;
+        int f= DateFormat.SHORT;
+        DateFormat df = DateFormat.getDateTimeInstance(f,f,Locale.ENGLISH);
+        Date dt = getStartTime();
+        startTimeString= df.format(dt);
+        return startTimeString;
+
     }
     /**
      * Returns the <code>String</code> endTimeString of current PhoneCall Object.
@@ -73,17 +85,39 @@ public class PhoneCall  extends AbstractPhoneCall implements Comparable{
      */
     @Override
     public String getEndTimeString() {
-        return this.endTimeString;
+        int f= DateFormat.SHORT;
+        DateFormat df = DateFormat.getDateTimeInstance(f, f, Locale.ENGLISH);
+        Date dt = getEndTime();
+        endTimeString = df.format(dt);
+        return endTimeString;
     }
 
     @Override
     public Date getEndTime() {
-        return super.getEndTime();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm a");
+        dateFormat.setLenient(false);
+        Date newDate= null;
+        try {
+            newDate = dateFormat.parse(this.endTimeString);
+        } catch (ParseException e) {
+            System.err.println("Invalid End Time \n"+ e);
+            System.exit(1);
+            e.printStackTrace();}
+        return newDate;
     }
 
     @Override
     public Date getStartTime() {
-        return super.getStartTime();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm a");
+        dateFormat.setLenient(false);
+        Date newDate= null;
+        try {
+           newDate = dateFormat.parse(this.startTimeString);
+        } catch (ParseException e) {
+            System.err.println("Invalid Start Time \n "+ e);
+            System.exit(1);
+            e.printStackTrace();}
+        return newDate;
     }
 
     /**
@@ -117,7 +151,7 @@ public class PhoneCall  extends AbstractPhoneCall implements Comparable{
      * <tt>0</tt>, or <tt>1</tt> according to whether the value of
      * <i>expression</i> is negative, zero or positive.
      *
-     * @param o the object to be compared.
+     * @param c2 the object to be compared.
      * @return a negative integer, zero, or a positive integer as this object
      * is less than, equal to, or greater than the specified object.
      * @throws NullPointerException if the specified object is null
@@ -125,7 +159,17 @@ public class PhoneCall  extends AbstractPhoneCall implements Comparable{
      *                              from being compared to this object.
      */
     @Override
-    public int compareTo(Object o) {
-        return 0;
+    public int compareTo(PhoneCall c2) {
+        return this.getStartTime().compareTo(c2.getStartTime());
+    }
+    public boolean equals(Object o){
+        if(o instanceof PhoneCall){
+            PhoneCall other = (PhoneCall) o;
+            return this.getStartTime().equals(other.getStartTime());
+        }
+        return false;
+    }
+    public int hashCode(){
+        return this.getStartTime().hashCode();
     }
 }

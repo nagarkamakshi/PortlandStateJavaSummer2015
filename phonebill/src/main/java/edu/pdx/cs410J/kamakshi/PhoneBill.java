@@ -20,6 +20,18 @@ public class PhoneBill extends AbstractPhoneBill {
      */
     String customerName = null;
     Collection c = new ArrayList<>();
+
+    public PhoneBill(){}
+
+    /**
+     * One Argument Constructor of PhoneBill Class
+     * @param customerName
+     */
+    public PhoneBill(String customerName){
+        this.customerName= customerName;
+    }
+
+
     /**
      *  Returns the <code>String</code> customerName of current PhoneBill Object.
      *
@@ -37,7 +49,7 @@ public class PhoneBill extends AbstractPhoneBill {
     @Override
     public void addPhoneCall(AbstractPhoneCall abstractPhoneCall) {
         String phoneCall= abstractPhoneCall.toString();
-        c.add(phoneCall);
+        c.add(abstractPhoneCall);
     }
 
     /**

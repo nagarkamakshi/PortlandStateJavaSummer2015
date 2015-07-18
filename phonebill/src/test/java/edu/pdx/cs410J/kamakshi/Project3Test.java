@@ -57,9 +57,66 @@ public class Project3Test extends InvokeMainTestCase {
     @Test
     public void testPrettyWorks(){
         MainMethodResult result = invokeMain("-pretty");
-        assertThat(result.getErr(), containsString("Give file name or -"));
+        assertThat(result.getErr(), containsString("Missing File name or -"));
         assertEquals(new Integer(1), result.getExitCode());
     }
+    @Test
+    public void testPrettyAndReadMeWorks(){
+        MainMethodResult result = invokeMain("-pretty","-README");
+        assertThat(result.getOut(), containsString("There is -textFile Command to read/write from/to a text file respectively."));
+        assertEquals(new Integer(0), result.getExitCode());
+    }
+    @Test
+    public void testPrettyAndPrintWork(){
+        MainMethodResult result = invokeMain("-pretty","-print");
+        assertThat(result.getErr(), containsString("Missing Customer Name"));
+        assertEquals(new Integer(1), result.getExitCode());
+    }
+    @Test
+    public void testPrettyAndFileNameWork(){
+        MainMethodResult result = invokeMain("-pretty","ram");
+        assertThat(result.getErr(), containsString("Missing Customer Name"));
+        assertEquals(new Integer(1), result.getExitCode());
+    }
+    @Test
+    public void testPrettyAndDashWork(){
+        MainMethodResult result = invokeMain("-pretty","-");
+        assertThat(result.getErr(), containsString("Missing Customer Name"));
+        assertEquals(new Integer(1), result.getExitCode());
+    }
+    @Test
+    public void testPrettyWithFileNameAndAllArgumentsWorkCorrectly(){
+        MainMethodResult result = invokeMain("-pretty","write","ram","099-000-0000","000-000-0000","01/01/2015","01:01","pm","01/01/2015","01:05","pm");
+        //assertThat(result.getOut(), containsString("hjhjhjhj"));
+        assertEquals(result.getExitCode(),new Integer(0));
+    }
+    @Test
+    public void testPrettyWithFileNameAndLessArgumentsExitWithError(){
+        MainMethodResult result = invokeMain("-pretty","write","ram","099-000-0000","000-000-0000","01/01/1010","01:01","am");
+        assertThat(result.getErr(), containsString("Missing EndDate"));
+        assertEquals(new Integer(1), result.getExitCode());
+    }
+
+    @Test
+    public void testPrettyWithDashAndAllArgumentsWorkCorrectly(){
+        MainMethodResult result = invokeMain("-pretty","-","ram","099-000-0000","000-000-0000","01/01/1010","01:01","am","11/11/1999","10:10","pm");
+        assertThat(result.getOut(), containsString(""));
+        //assertEquals(new Integer(1), result.getExitCode());
+    }
+
+    @Test
+    public void testPrettyWithDashAndExtraArgumentExitWithError(){
+        MainMethodResult result = invokeMain("-pretty","-","ram","099-000-0000","000-000-0000","01/01/1010","01:01","am","11/11/1999","10:10","pm","ahkjsh","kadhkashdk");
+        assertThat(result.getErr(), containsString("Extraneous Argument"));
+        assertEquals(new Integer(1), result.getExitCode());
+    }
+    @Test
+    public void testPrettyWithFileNameAndSortedPhoneCalls(){
+        MainMethodResult result = invokeMain("-pretty","-","ram","099-000-0000","000-000-0000","01/01/1010","01:01","am","11/11/1999","10:10","pm");
+        assertThat(result.getErr(), containsString(""));
+        assertEquals(new Integer(0), result.getExitCode());
+    }
+
 
 
 
@@ -96,18 +153,12 @@ public class Project3Test extends InvokeMainTestCase {
         MainMethodResult result = invokeMain("Jams","dhakjs","hagsjha","sad");
         assertEquals(new Integer(1), result.getExitCode());
     }
-    @Test
-    public void testWithOneArgumentExitWithMissingCallerNumber(){
-        MainMethodResult result = invokeMain("Jams");
-        assertEquals(new Integer(1), result.getExitCode());
-    }
 
     @Test
     public void testBothReadMeAndPrintWork(){
         MainMethodResult result = invokeMain("-README","-print");
-        String expected1 = "There is -textFile Command to read/write from/to a text file respectively.";
-        //String expected2 = "Please enter a call first";
-        assertThat(result.getOut(),containsString(expected1));
+        String expected = "There is -textFile Command to read/write from/to a text file respectively.";
+        assertThat(result.getOut(),containsString(expected));
     }
     @Test
     public void testBothPrintAndReadMeWork(){
@@ -144,20 +195,8 @@ public class Project3Test extends InvokeMainTestCase {
 
     }
     @Test
-    public void testMissingArgumentCalleeNumberExitsWithError(){
-        MainMethodResult result = invokeMain("-print","Jams","190-000-0000");
-        assertEquals(new Integer(1),result.getExitCode());
-    }
-    @Test
-    public void testOnlyTextFileCommandExitWithError(){
-        MainMethodResult result = invokeMain("-textFile");
-        //assertEquals(new Integer(1), result.getExitCode());
-        assertErrorMessageExitCodeAndUsage(result, "Missing FileName");
-    }
-    @Test
     public void testTextFileCommandWithReadMe(){
         MainMethodResult result = invokeMain("-textFile","-README");
-        //assertEquals(new Integer(1), result.getExitCode());
         assertThat(result.getOut(),containsString("This is a README for java Project2 : Storing a Phone Bill in a Text File at Portland State University Summer 2015, created by Kamakshi Nagar."));
     }
     @Test
@@ -167,88 +206,89 @@ public class Project3Test extends InvokeMainTestCase {
     }
     @Test
     public void testInvalidCalleeNumberExitsWithError(){
-        MainMethodResult result = invokeMain("kama","999-99-9999","000-00-00","1/15/2015","19:39","01/2/2015","1:02");
-        assertThat(result.getErr(),containsString("Invalid number"));
+        MainMethodResult result = invokeMain("kama","999-99-9999","000-00-00","1/15/2015","09:39","am","1/15/2015","09:39","pm");
+        assertThat(result.getErr(),containsString("Invalid caller number"));
         assertEquals(new Integer(1), result.getExitCode());
     }
     @Test
     public void testBothStartTimeAndEndTimeWork(){
-        MainMethodResult result = invokeMain("kama","999-999-9999","000-000-0000","1/15/2015","09:39","Jams","kama");
-        assertThat(result.getErr(),containsString("Invalid Date Time"));
+        MainMethodResult result = invokeMain("kama","999-999-9999","000-000-0000","1/15/2015","09:39","am","ram","09:39","pm");
+        assertThat(result.getErr(),containsString("Invalid End Time"));
         assertEquals(new Integer(1), result.getExitCode());
     }
     @Test
     public void testChangedStartTimeAndEndTimeWork(){
         MainMethodResult result = invokeMain("kama","999-999-9999","000-000-0000","1/15/2015","09:39","pm","1/15/2015","09:39","pm");
-        assertThat(result.getErr(),containsString("valid Date Time"));
-        assertEquals(new Integer(1), result.getExitCode());
+        assertThat(result.getOut(),containsString(""));
+        assertEquals(new Integer(0), result.getExitCode());
     }
     @Test
     public void testInvalidDateTimeExitsWithError(){
-        MainMethodResult result = invokeMain("-print","Jams","999-999-9999","000-000-0000","kamak","19:39","01/02/2015","1:03");
+        MainMethodResult result = invokeMain("-print","Jams","99-999-9999","000-000-0000","kamak","09:39","pm","1/15/2015","09:39","pm");
+        assertThat(result.getErr(),containsString("Invalid caller number"));
         assertEquals(new Integer(1), result.getExitCode());
     }
 
     @Test
-    public void testWhatHappensForArgumetSeries(){
-        MainMethodResult result = invokeMain("Jams","999-999-9999","000-000-0000","11/15/2015","9:39","11/02/2015","01:03");
+    public void testWhatHappensForArgumentSeries(){
+        MainMethodResult result = invokeMain("Jams","999-999-9999","000-000-0000","11/15/2015","9:39","pm","1/15/2015","09:39","pm");
         assertThat(result.getOut(),containsString(""));
         //assertEquals(result.getExitCode(), new Integer(1));
     }
 
     @Test
     public void testInCorrectOutputForExtraArgument(){
-        MainMethodResult result = invokeMain("Jams","999-999-9999","000-000-0000","11/15/2015","9:39","11/02/2015","01:03","kamakshi");
+        MainMethodResult result = invokeMain("Jams","999-999-9999","000-000-0000","11/15/2015","9:39","pm","1/15/2015","09:39","pm","kamakshi");
         assertThat(result.getErr(),containsString("Extraneous Argument"));
         //assertEquals(result.getExitCode(), new Integer(1));
     }
     @Test
     public void testAllPrintsCorrectOutput(){
-        MainMethodResult result = invokeMain("-print","Jams","999-999-9999","000-000-0000","1/15/2015","19:39","01/2/2015","01:03");
-        assertThat(result.getOut(), containsString("Phone call from 999-999-9999 to 000-000-0000 from Thu Jan 15 19:39:00 PST 2015 to Fri Jan 02 01:03:00 PST 2015"));
+        MainMethodResult result = invokeMain("-print","Jams","999-999-9999","000-000-0000","01/05/2015","9:39","am","01/2/2015","01:03","am");
+        assertThat(result.getOut(), containsString("Phone call from 999-999-9999 to 000-000-0000 from 1/5/15 9:39 AM to 1/2/15 1:03 AM"));
     }
     @Test
     public void testAllPrintsCorrectOutputForDifferentDate(){
-        MainMethodResult result = invokeMain("-print","Jams","999-999-9999","000-000-0000","11/15/2015","9:39","11/02/2015","01:03");
-        assertThat(result.getOut(), containsString("Phone call from 999-999-9999 to 000-000-0000 from Sun Nov 15 09:39:00 PST 2015 to Mon Nov 02 01:03:00 PST 2015"));
-    }
-    @Test
-    public void testPrintsInCorrectOutputForExtraArgument(){
-        MainMethodResult result = invokeMain("-print","Jams","999-999-9999","000-000-0000","11/15/2015","9:39","11/02/2015","01:03","kamakshi");
-        assertThat(result.getErr(),containsString("Extraneous Argument"));
-        assertEquals(result.getExitCode(), new Integer(1));
+        MainMethodResult result = invokeMain("-print","Jams","999-999-9999","000-000-0000","08/16/2015","9:39","am","9/19/2015","01:03","pm");
+        assertThat(result.getOut(), containsString("Phone call from 999-999-9999 to 000-000-0000 from 8/16/15 9:39 AM to 9/19/15 1:03 PM"));
     }
     @Test
     public void testAllPrintsInCorrectOutputForATextFile(){
-        MainMethodResult result = invokeMain("-textFile","read.txt","Jams","999-999-9999","000-000-0000","11/15/2015","9:39","11/02/2015","01:03","kamakshi");
+        MainMethodResult result = invokeMain("-textFile","read.txt","Jams","999-999-9999","000-000-0000","1/5/2015","9:39","am","1/02/2015","01:03","pm","kamakshi");
         assertThat(result.getErr(),containsString("Extraneous Argument"));
         assertEquals(result.getExitCode(), new Integer(1));
     }
     @Test
     public void testAllPrintsCorrectOutputForATextFile(){
-        MainMethodResult result = invokeMain("-textFile","write","Jams","999-999-9999","000-000-0000","11/15/2015","9:39","11/02/2015","01:03");
-        assertThat(result.getOut(),containsString("Customer: Jams"));
+        MainMethodResult result = invokeMain("-textFile","ram","Jams","999-999-9999","000-000-0000","11/15/2015","9:39","am","11/02/2015","01:03","pm");
+        assertThat(result.getOut(),containsString(""));
         assertEquals(result.getExitCode(), new Integer(0));
     }
     @Test
     public void testAllPrintsInCorrectOutputForExistingTextFile(){
-        MainMethodResult result = invokeMain("-textFile","write");
-        assertThat(result.getOut(),containsString("Customer: Jams"));
-        assertEquals(result.getExitCode(), new Integer(0));
+        MainMethodResult result = invokeMain("-textFile","ram");
+        assertThat(result.getErr(),containsString("Missing Customer Name"));
+        assertEquals(result.getExitCode(), new Integer(1));
 
     }
     @Test
     public void testAllPrintsInCorrectOutputForNonExistingTextFile(){
         MainMethodResult result = invokeMain("-textFile","kama");
-        assertThat(result.getOut(),containsString("Customer: null"));
-        assertEquals(result.getExitCode(), new Integer(0));
+        assertThat(result.getErr(),containsString("Missing Customer Name"));
+        assertEquals(result.getExitCode(), new Integer(1));
 
     }
     @Test
     public void testIncorrectOptionExitWithError(){
-        MainMethodResult result = invokeMain("-kamak","kama","999-999-0000","000-000-0000","01/01/1929","01:01","01/02/1990","09:00");
+        MainMethodResult result = invokeMain("-kamak","kama","999-999-0000","000-000-0000","01/01/1929","01:01","pm","01/02/1990","09:00","pm");
         assertThat(result.getErr(),containsString("Invalid Command line Option"));
         assertEquals(result.getExitCode(), new Integer(1));
 
+    }
+    @Test
+    public void testForNewFunctionality(){
+        MainMethodResult result = invokeMain("-print","Jams","990-999-9999","000-000-0000","11/14/1990","9:16","pm","01/02/1990","9:16","am");
+        assertThat(result.getOut(),containsString("Phone call from 990-999-9999 to 000-000-0000 from 11/14/90 9:16 PM to 1/2/90 9:16 AM"));
+        //assertEquals(new Integer(1), result.getExitCode());
     }
 }

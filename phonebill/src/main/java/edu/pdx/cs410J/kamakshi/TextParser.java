@@ -18,9 +18,11 @@ public class TextParser implements PhoneBillParser {
 
     private PhoneBill phoneBill; //The Phone Bill which we are creating.
     private BufferedReader in; //The Phone Bill will be Read from here.
+    private static final PrintStream out = System.out;
 
     private static void debug(String s) {
-         System.out.println(s);
+        if (Boolean.getBoolean("TextParser.DEBUG")) {
+            out.println(s); }
     }
     /**
      * Creates a new text parser that reads its input from a file of a

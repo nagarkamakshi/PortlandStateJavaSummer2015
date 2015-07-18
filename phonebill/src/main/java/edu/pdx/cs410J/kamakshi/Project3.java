@@ -1,11 +1,8 @@
 package edu.pdx.cs410J.kamakshi;
 
+import edu.pdx.cs410J.AbstractPhoneBill;
 import edu.pdx.cs410J.ParserException;
-
 import java.io.*;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 /**
  * The main class for the Project3 CS410J: Pretty Printing a Phone Bill.
@@ -25,6 +22,13 @@ public class Project3 {
             "-textFile filename \n "+
             "-print \n" +
             "-README \n" ;
+    private static boolean pretty= false;
+    private static String fileName = null;
+    private static boolean print= false;
+    private static boolean write = false;
+
+    private static PhoneBill pb = new PhoneBill();
+    private static PhoneCall pc = new PhoneCall();
 
     /**
      * Main program that parses the command line arguments, creates a
@@ -38,10 +42,9 @@ public class Project3 {
      */
     public static void main(String[] args) throws IllegalArgumentException{
 
-        PhoneBill pb = new PhoneBill();
-        PhoneCall pc = new PhoneCall();
-        String fileName = null;
-        boolean print= false; boolean write = false; boolean read = false;
+        //PhoneBill pb = new PhoneBill();
+        //PhoneCall pc = new PhoneCall();
+
 
         switch (args.length) {
             case 0:
@@ -49,90 +52,132 @@ public class Project3 {
                 break;
 
             case 1:
-                if (args[0].equals("-README")) {
-                    printReadmeMessage();
-                } else if (args[0].equals("-print")) {
-                    printErrorMessageAndExit("Missing Customer Name");
-                } else if (args[0].equals("-textFile")) {
-                    printErrorMessageAndExit("Missing FileName");
-                } else if (args[0].equals("-pretty")){
-                    printErrorMessageAndExit("Give file name or -");
-                } else printErrorMessageAndExit("Missing Caller Number");
+                switch (args[0]) {
+                    case "-README":printReadmeMessage();
+                    case "-print":printErrorMessageAndExit("Missing Customer Name");
+                    case "-textFile":printErrorMessageAndExit("Missing FileName");
+                    case "-pretty":printErrorMessageAndExit("Missing File name or -");
+                    default:printErrorMessageAndExit("Missing Caller Number");
+                }
                 break;
             case 2:
                 for (int i = 0; i < 2; i++) {
                     if (args[i].equals("-README")) printReadmeMessage();
                 }
-                if (args[0].equals("-print")) {
-                    printErrorMessageAndExit("Missing Caller Number");
-                } else if (args[0].equals("-textFile")) {
-                    read = true;
-                    fileName= args[1];
-                } else printErrorMessageAndExit("Missing Callee Number");
+                switch (args[0]) {
+                    case "-print":printErrorMessageAndExit("Missing Caller Number");
+                    case "-textFile":printErrorMessageAndExit("Missing Customer Name");
+                    case "-pretty":printErrorMessageAndExit("Missing Customer Name");
+                    default:printErrorMessageAndExit("Missing Callee Number");
+                }
                 break;
             case 3:
                 for (int i = 0; i < 3; i++) {
                     if (args[i].equals("-README")) printReadmeMessage();
                 }
-                if (args[0].equals("-print")) printErrorMessageAndExit("Missing Callee Number");
-                if (args[0].equals("-textFile")){ printErrorMessageAndExit("Missing Caller Number");}
-                else printErrorMessageAndExit("Missing StartDate");
+                switch (args[0]) {
+                    case "-print":printErrorMessageAndExit("Missing Callee Number");
+                    case "-textFile":printErrorMessageAndExit("Missing Caller Number");
+                    case "-pretty":printErrorMessageAndExit("Missing Caller Number");
+                    default:printErrorMessageAndExit("Missing StartDate");
+                }
                 break;
             case 4:
-                if (args[0].equals("-print")) {
-                    printErrorMessageAndExit("Missing StartDate");
+                switch (args[0]) {
+                    case "-print":printErrorMessageAndExit("Missing StartDate");
+                    case "-textFile":printErrorMessageAndExit("Missing Callee Number");
+                    case "-pretty":printErrorMessageAndExit("Missing Callee Number");
+                    default: printErrorMessageAndExit("Missing StartTime");
                 }
-                if (args[0].equals("-textFile")) {
-                    printErrorMessageAndExit("Missing Callee Number");
-                }
-                printErrorMessageAndExit("Missing StartTime");
                 break;
             case 5:
-                if (args[0].equals("-print")) printErrorMessageAndExit("Missing StartTime");
-                if (args[0].equals("-textFile")) {
-                    printErrorMessageAndExit("Missing StartDate");
+                switch (args[0]) {
+                    case "-print":printErrorMessageAndExit("Missing StartTime");
+                    case "-textFile":printErrorMessageAndExit("Missing StartDate");
+                    case "-pretty":printErrorMessageAndExit("Missing StartDate");
+                    default:printErrorMessageAndExit("Missing AM/PM");
                 }
-                printErrorMessageAndExit("Missing EndDate");
                 break;
             case 6:
-                if (args[0].equals("-textFile")) {
-                    printErrorMessageAndExit("Missing StartTime");
+                switch (args[0]) {
+                    case "-print":printErrorMessageAndExit("Missing AM/PM");
+                    case "-textFile":printErrorMessageAndExit("Missing StartTime");
+                    case "-pretty":printErrorMessageAndExit("Missing StartTime");
+                    default:printErrorMessageAndExit("Missing EndDate");
                 }
-                if (args[0].equals("-print")) printErrorMessageAndExit("Missing EndDate");
-                printErrorMessageAndExit("Missing EndTime");
                 break;
             case 7:
-                if (args[0].equals("-textFile")) printErrorMessageAndExit("Missing EndDate");
-                if (args[0].equals("-print")) printErrorMessageAndExit("Missing EndTime");
+                switch (args[0]) {
+                    case "-print":printErrorMessageAndExit("Missing EndDate");
+                    case "-textFile":printErrorMessageAndExit("Missing AM/PM");
+                    case "-pretty":printErrorMessageAndExit("Missing AM/PM");
+                    default:printErrorMessageAndExit("Missing EndTime");
+                }
+                break;
             case 8:
-                if (args[0].equals("-textFile")) printErrorMessageAndExit("Missing EndTime");
+                switch (args[0]) {
+                    case "-print":printErrorMessageAndExit("Missing EndTime");
+                    case "-textFile":printErrorMessageAndExit("Missing EndDate");
+                    case "-pretty":printErrorMessageAndExit("Missing EndDate");
+                    default:printErrorMessageAndExit("Missing AM/PM");
+                }
+                break;
+            case 9:
+                switch (args[0]) {
+                    case "-print": printErrorMessageAndExit("Missing AM/PM");
+                    case "-textFile":printErrorMessageAndExit("Missing EndTime");
+                    case "-pretty":printErrorMessageAndExit("Missing EndTime");
+                }
+            case 10:
+                switch (args[0]) {
+                    case "-textFile":printErrorMessageAndExit("Missing AM/PM");
+                    case "-pretty":printErrorMessageAndExit("Missing AM/PM");
+                }
             default:
                 int i = 0;
                 if(args[0].startsWith("-")){
-                    if (args[0].equals("-print")){
-                        if (args.length>8){ printErrorMessageAndExit("Extraneous Argument");}
-                        i = 1; print=true;}
-                    else if (args[0].equals("-textFile")){
-                        if (args.length>9){ printErrorMessageAndExit("Extraneous Argument");}
-                        i=2; write = true; fileName= args[i-1];
-                    } else printErrorMessageAndExit("Invalid Command line Option");
-                }else if (args.length>7){printErrorMessageAndExit("Extraneous Argument");}
+                    switch (args[0]) {
+                        case "-print":
+                            if (args.length > 10) {printErrorMessageAndExit("Extraneous Argument");
+                            }
+                            i = 1;
+                            print = true;
+                            break;
+                        case "-textFile":
+                            if (args.length > 11) {printErrorMessageAndExit("Extraneous Argument");
+                            }
+                            i = 2;
+                            write = true;
+                            fileName = args[i - 1];
+                            break;
+                        case "-pretty":
+                            if (args.length > 11) {printErrorMessageAndExit("Extraneous Argument");
+                            }
+                            i = 2;
+                            pretty = true;
+                            fileName = args[i-1];
+                            break;
+                        default:
+                            printErrorMessageAndExit("Invalid Command line Option");
+                            break;
+                    }
+                }else if (args.length>9){printErrorMessageAndExit("Extraneous Argument");}
 
-                pb.customerName = args[i];
-                pc.callerNumber = validatePhoneNumber(args[i + 1]);
-                pc.calleeNumber = validatePhoneNumber(args[i + 2]);
-                pc.startTimeString = validateDateTime(args[i + 3] + " " + args[i + 4]);
-                pc.endTimeString = validateDateTime(args[i + 5] + " " + args[i + 6]);
+                pb = new PhoneBill(args[i]);
+                pc = new PhoneCall(args[i+1],args[i+2],args[i+3]+" "+ args[i+4]+" "+args[i+5],args[i+6]+" "+ args[i+7]+" "+args[i+8]);
+
         }
 
-        if(print== true) {printPhoneCall(pc,pb);}
-
-        if(write== true || read==true) { // Dump the family tree to the file
-            readWriteFromOrToTextFile(pc,pb,fileName,read);
+        if(print) {printPhoneCall();}
+        else if(write) { // Dump the family tree to the file
+            readWriteFromOrToTextFile();
+            System.exit(0);
+        } else if (pretty){
+            prettyPrintingToAFile();
             System.exit(0);
         }
+        else pb.addPhoneCall(pc); System.exit(0);
     }
-
     /**
      * This Method has description message for -README command line Argument.
      * It describes the Project1 and the classes we will be using for it.
@@ -149,77 +194,65 @@ public class Project3 {
 
     /**
      *
-     * @param call
-     * @param bill
+     *
      */
-    private static void printPhoneCall(PhoneCall call,PhoneBill bill){
-        bill.addPhoneCall(call);
-        System.out.println(call.toString());
+    private static void printPhoneCall(){
+        pb.addPhoneCall(pc);
+        System.out.println(pc.toString());
     }
 
     /**
+     *This M
      *
-     * @param call
-     * @param bill
-     * @param fileParam
-     * @param b
      */
 
-    private static void readWriteFromOrToTextFile(PhoneCall call,PhoneBill bill,String fileParam,boolean b){
+    private static void readWriteFromOrToTextFile(){
         try  {
-            File file = new File(fileParam);
-            if(file.exists()&& b == true){TextParser parser = new TextParser(fileParam);
-                parser.parse();
-            }
-            else{
-                TextDumper dumper = new TextDumper(fileParam);
-                bill.addPhoneCall(call);
-                dumper.dump(bill);
-                TextParser parser = new TextParser(fileParam);
-                bill = (PhoneBill)parser.parse();
-                dumper.dump(bill);}
+            TextDumper dumper = new TextDumper(fileName);
+            pb.addPhoneCall(pc);
+            dumper.dump(pb);
+            TextParser parser = new TextParser(fileName);
+            parser.parse();
+
         }catch (FileNotFoundException ex) {
-            System.out.println("** Could not find file " + fileParam);
+            System.out.println("** Could not find file " + fileName);
         } catch (ParserException e) {
             System.err.println("Parser Exception: "+ e);
             e.printStackTrace();
         } catch (IOException ex) {
-            System.err.println("** IOException while dealing with " + fileParam);
+            System.err.println("** IOException while dealing with " + fileName);
         }
     }
 
     /**
-     * Returns the validated <code>String</code>
-     * @param cNumber The <code>String</code> to be validated for the pattern(nnn-nnn-nnnnn).
-     * @return validated <code>String</code> cNumber
+     * This Method adds the phone call to the phone Bill and
+     * writes it to either Console or a file in a pretty format.
      */
-    private static String validatePhoneNumber(String cNumber) {
-
-        String phoneNumberPattern = "\\d{3}-\\d{3}-\\d{4}";
-        if (!cNumber.matches(phoneNumberPattern)){
-            printErrorMessageAndExit("Invalid number");}
-        return cNumber;
-    }
-
-    /**
-     * Returns the validated <code>String</code>
-     *
-     * @param dateTime The <code>String</code> that has to be validated for format (MM/dd/yyyy HH:mm).
-     * @return validated <code>String</code> dateTime
-     *
-     */
-    private static String validateDateTime(String dateTime) {
-
-        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm");
-        dateFormat.setLenient(false);
+    private static void prettyPrintingToAFile(){
         try {
-            Date newDate = dateFormat.parse(dateTime);
-            dateTime = newDate.toString();
-        } catch (ParseException e) {
-            printErrorMessageAndExit("Invalid Date Time");
-            e.printStackTrace();}
-        return dateTime;
+            pb.addPhoneCall(pc);
+            PrettyPrinter pretty= null;
+            if(fileName.equals("-")){
+                PrintWriter out = new PrintWriter(System.out,true);
+                pretty = new PrettyPrinter(out);
+            }
+            else {File file = new File(fileName);
+            if(file.exists()){
+                PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(fileName, true)));
+                pretty = new PrettyPrinter(out);
+            }else{
+                pretty = new PrettyPrinter(file);} }
+
+            pretty.dump(pb);
+
+        } catch (FileNotFoundException ex) {
+            System.err.println("** Could not find file " + fileName);
+        } catch (IOException e) {
+            System.err.println("** " + e.getMessage());
+            e.printStackTrace();
+        }
     }
+
 
     /**
      * This method prints the error message along with usage message for invalid command line arguments

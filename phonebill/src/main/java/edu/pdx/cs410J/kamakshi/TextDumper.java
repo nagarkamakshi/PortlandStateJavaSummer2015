@@ -49,8 +49,8 @@ public class TextDumper implements PhoneBillDumper {
     @Override
     public void dump(AbstractPhoneBill abstractPhoneBill) throws IOException {
         StringBuffer sbr = new StringBuffer();
-        sbr.append("Customer: "+abstractPhoneBill.getCustomer());
-        sbr.append( "\n Phone Call: "+abstractPhoneBill.getPhoneCalls());
+        sbr.append("\n Customer: "+abstractPhoneBill.getCustomer());
+        sbr.append("\n Phone Call: "+abstractPhoneBill.getPhoneCalls());
         sbr.append("\n Phone Bill: "+abstractPhoneBill.toString());
 
         //Write the String Buffer to print writer
