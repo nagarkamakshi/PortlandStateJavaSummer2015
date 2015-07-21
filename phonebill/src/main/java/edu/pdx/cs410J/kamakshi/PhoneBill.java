@@ -17,20 +17,32 @@ public class PhoneBill extends AbstractPhoneBill {
 
     /**
      * The <code>String</code> is null.
+     * <code>ArrayList</code> of phone calls is collection of all calls.
      */
     String customerName = null;
-    Collection c = new ArrayList<>();
-
-    public PhoneBill(){}
+    private ArrayList<AbstractPhoneCall> phoneCalls;
 
     /**
-     * One Argument Constructor of PhoneBill Class
-     * @param customerName
+     * creates a Phone empty <code>ArrayList</code> of calls.
+     */
+    public PhoneBill(){ this.phoneCalls = new ArrayList<>(); }
+
+    /**
+     * One Argument Constructor of PhoneBill Class with phone calls
+     * @param customerName name of the customer
      */
     public PhoneBill(String customerName){
+         this.phoneCalls = new ArrayList<>();
         this.customerName= customerName;
     }
 
+    /**
+     * setter of the customer name.
+     * @param customerName
+     */
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
 
     /**
      *  Returns the <code>String</code> customerName of current PhoneBill Object.
@@ -48,8 +60,7 @@ public class PhoneBill extends AbstractPhoneBill {
      */
     @Override
     public void addPhoneCall(AbstractPhoneCall abstractPhoneCall) {
-        String phoneCall= abstractPhoneCall.toString();
-        c.add(abstractPhoneCall);
+        this.phoneCalls.add(abstractPhoneCall);
     }
 
     /**
@@ -59,7 +70,7 @@ public class PhoneBill extends AbstractPhoneBill {
 
     @Override
     public Collection getPhoneCalls() {
-        return this.c;
+        return this.phoneCalls;
     }
 
 

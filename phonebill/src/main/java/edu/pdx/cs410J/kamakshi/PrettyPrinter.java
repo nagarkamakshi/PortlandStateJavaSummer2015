@@ -4,7 +4,6 @@ import edu.pdx.cs410J.AbstractPhoneBill;
 import edu.pdx.cs410J.PhoneBillDumper;
 
 import java.io.*;
-import java.text.DateFormat;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
@@ -43,31 +42,28 @@ public class PrettyPrinter implements PhoneBillDumper {
     }
 
     /**
-     * Prints the contents of the given family tree in a human-readable
-     * format.
+     * Prints the contents of the given Phone bill including its phone calls
+     * in a human-readable format.
+     *
+     * @param abstractPhoneBill that need to be dumped on a file/destination
+     * @throws IOException in writing to a file
      */
-
 
     @Override
     public void dump(AbstractPhoneBill abstractPhoneBill) throws IOException {
 
-        /*StringBuffer sbr = new StringBuffer();
-        sbr.append(" \n Customer: "+abstractPhoneBill.getCustomer());
-        sbr.append( "\n Phone Call: "+abstractPhoneBill.getPhoneCalls());
-        sbr.append("\n Phone Bill: "+abstractPhoneBill.toString());
-        sbr.append("\n Call Duration is: "+ "don't know yet");
-        sbr.append("\n"); */
 
         SortedSet<PhoneCall> sortedTree = new TreeSet<>();
         sortedTree.addAll(abstractPhoneBill.getPhoneCalls());
 
         // Print a banner
-        pw.println("\n");
-        pw.println(abstractPhoneBill.getCustomer().toUpperCase() +"'s Phone Bill.... \n");
+        pw.println("Your Phone Bill");
 
         Iterator iter = sortedTree.iterator();
+
         while (iter.hasNext()) {
             PhoneCall call = (PhoneCall) iter.next();
+            pw.println("Customer: "+ abstractPhoneBill.getCustomer());
             pw.println("Caller: " + call.getCaller() );
             pw.println("Callee: " + call.getCallee());
             pw.println("StartTime: "+ call.getStartTimeString());
@@ -76,14 +72,6 @@ public class PrettyPrinter implements PhoneBillDumper {
             pw.println("Call duration: "+ TimeUnit.MILLISECONDS.toMinutes(l) + " Minutes");
             pw.println("\n");
         }
-
-        pw.println("\n");
-
-
-
-        //Write the String Buffer to print writer
-        //pw.append(sbr.toString());
-
         //Flush and Close the print writer
         pw.flush();
         pw.close();

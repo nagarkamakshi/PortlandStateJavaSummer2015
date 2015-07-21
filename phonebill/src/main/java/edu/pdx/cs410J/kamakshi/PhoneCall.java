@@ -1,7 +1,6 @@
 package edu.pdx.cs410J.kamakshi;
 
 import edu.pdx.cs410J.AbstractPhoneCall;
-import edu.pdx.cs410J.ParserException;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -28,9 +27,21 @@ public class PhoneCall  extends AbstractPhoneCall implements Comparable<PhoneCal
     String startTimeString= null;
     String endTimeString= null;
 
+
+    /**
+     * creates an empty phone call.
+     */
     public PhoneCall() {
     }
 
+    /**
+     * Creates a phone call with the all information in it.
+     *
+     * @param callerNumber phone number of a caller
+     * @param calleeNumber phone number  of a callee
+     * @param startTimeString start time of call
+     * @param endTimeString end time of call
+     */
     public PhoneCall(String callerNumber, String calleeNumber, String startTimeString, String endTimeString) {
         this.calleeNumber = calleeNumber;
         this.callerNumber = callerNumber;
@@ -39,14 +50,14 @@ public class PhoneCall  extends AbstractPhoneCall implements Comparable<PhoneCal
     }
 
     /**
-     * Returns the <code>String</code> callerNumber of current PhoneCall Object.
+     * Returns the validated <code>String</code> callerNumber of current PhoneCall Object.
      *
-     * @return <code>String</code> callerNumber
+     * @return  validated <code>String</code> callerNumber
      */
     @Override
     public String getCaller() {
         String phoneNumberPattern = "\\d{3}-\\d{3}-\\d{4}";
-        if (!this.callerNumber.matches(phoneNumberPattern)){
+       if (!this.callerNumber.matches(phoneNumberPattern)){
             System.err.println("Invalid caller number");
             System.exit(1);
         }
@@ -92,6 +103,11 @@ public class PhoneCall  extends AbstractPhoneCall implements Comparable<PhoneCal
         return endTimeString;
     }
 
+    /**
+     * Returns the formatted <code>Date</code> StartTime of current PhoneCall Object.
+     *
+     * @return <code>Date</code>  startTime
+     */
     @Override
     public Date getEndTime() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm a");
@@ -105,7 +121,11 @@ public class PhoneCall  extends AbstractPhoneCall implements Comparable<PhoneCal
             e.printStackTrace();}
         return newDate;
     }
-
+    /**
+     * Returns the formatted <code>Date</code> endTime of current PhoneCall Object.
+     *
+     * @return <code>Date</code>  endTime
+     */
     @Override
     public Date getStartTime() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm a");
@@ -121,37 +141,13 @@ public class PhoneCall  extends AbstractPhoneCall implements Comparable<PhoneCal
     }
 
     /**
-     * Compares this object with the specified object for order.  Returns a
+     * Compares this Phone Call object with the other Phone call object.Returns a
      * negative integer, zero, or a positive integer as this object is less
-     * than, equal to, or greater than the specified object.
-     * <p>
-     * <p>The implementor must ensure <tt>sgn(x.compareTo(y)) ==
-     * -sgn(y.compareTo(x))</tt> for all <tt>x</tt> and <tt>y</tt>.  (This
-     * implies that <tt>x.compareTo(y)</tt> must throw an exception iff
-     * <tt>y.compareTo(x)</tt> throws an exception.)
-     * <p>
-     * <p>The implementor must also ensure that the relation is transitive:
-     * <tt>(x.compareTo(y)&gt;0 &amp;&amp; y.compareTo(z)&gt;0)</tt> implies
-     * <tt>x.compareTo(z)&gt;0</tt>.
-     * <p>
-     * <p>Finally, the implementor must ensure that <tt>x.compareTo(y)==0</tt>
-     * implies that <tt>sgn(x.compareTo(z)) == sgn(y.compareTo(z))</tt>, for
-     * all <tt>z</tt>.
-     * <p>
-     * <p>It is strongly recommended, but <i>not</i> strictly required that
-     * <tt>(x.compareTo(y)==0) == (x.equals(y))</tt>.  Generally speaking, any
-     * class that implements the <tt>Comparable</tt> interface and violates
-     * this condition should clearly indicate this fact.  The recommended
-     * language is "Note: this class has a natural ordering that is
-     * inconsistent with equals."
-     * <p>
-     * <p>In the foregoing description, the notation
-     * <tt>sgn(</tt><i>expression</i><tt>)</tt> designates the mathematical
-     * <i>signum</i> function, which is defined to return one of <tt>-1</tt>,
-     * <tt>0</tt>, or <tt>1</tt> according to whether the value of
-     * <i>expression</i> is negative, zero or positive.
+     * than, equal to, or greater than the other phone call.
+     * First it checks with the start time if start time is equal then compares using
+     * caller number, if same considers same phone call.
      *
-     * @param c2 the object to be compared.
+     * @param c2 the other phone call to be compared.
      * @return a negative integer, zero, or a positive integer as this object
      * is less than, equal to, or greater than the specified object.
      * @throws NullPointerException if the specified object is null
@@ -160,16 +156,43 @@ public class PhoneCall  extends AbstractPhoneCall implements Comparable<PhoneCal
      */
     @Override
     public int compareTo(PhoneCall c2) {
-        return this.getStartTime().compareTo(c2.getStartTime());
+        int diff = this.getStartTimeString().compareTo(c2.getStartTimeString());
+        if (diff == 0) diff = this.getCaller().compareTo(c2.getCaller());
+        return diff;
     }
+
+    /**
+     * With Implementation of compareTo() we need to implement equals() and hashcode().
+     * @param o other object that need to be compared
+     * @return true if both object's hash code are equal and false if not.
+     */
     public boolean equals(Object o){
         if(o instanceof PhoneCall){
-            PhoneCall other = (PhoneCall) o;
-            return this.getStartTime().equals(other.getStartTime());
+            return true;
         }
         return false;
     }
+
+    /**
+     * Returns <code>int</code> for the hash code
+     * @return hashcode
+     */
     public int hashCode(){
         return this.getStartTime().hashCode();
     }
+
+    /*public void setCaller(String callerNumber) {
+        this.callerNumber= callerNumber;
+    }
+
+    public void setCallee(String calleeNumber){
+        this.calleeNumber= calleeNumber;
+    }
+
+    public void setStartTimeString(Date startTime){
+        this.startTime= startTime;
+    }
+    public void setEndTime(Date endTime){
+        this.endTime= endTime;
+    } */
 }

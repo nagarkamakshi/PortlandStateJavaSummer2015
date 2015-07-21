@@ -15,8 +15,8 @@ public class Project3 {
             "  customer \n" +
             "  callerNumber : nnn-nnn-nnnn \n" +
             "  calleeNumber : nnn-nnn-nnnn \n" +
-            "  startTime : MM/dd/yyyy HH:mm\n" +
-            "  endTime : MM/dd/yyyy HH:mm\n"+
+            "  startTime : MM/dd/yyyy hh:mm AM/PM\n" +
+            "  endTime : MM/dd/yyyy hh:mm AM/PM\n"+
             "Options are (options may appear in this order)\n " +
             "-pretty file \n"+
             "-textFile filename \n "+
@@ -26,6 +26,7 @@ public class Project3 {
     private static String fileName = null;
     private static boolean print= false;
     private static boolean write = false;
+    private static String customerName= null;
 
     private static PhoneBill pb = new PhoneBill();
     private static PhoneCall pc = new PhoneCall();
@@ -41,10 +42,6 @@ public class Project3 {
      * @throws IllegalArgumentException
      */
     public static void main(String[] args) throws IllegalArgumentException{
-
-        //PhoneBill pb = new PhoneBill();
-        //PhoneCall pc = new PhoneCall();
-
 
         switch (args.length) {
             case 0:
@@ -136,26 +133,20 @@ public class Project3 {
             default:
                 int i = 0;
                 if(args[0].startsWith("-")){
+                    if (args.length > 12) {printErrorMessageAndExit("Extraneous Argument");
+                    }
                     switch (args[0]) {
                         case "-print":
-                            if (args.length > 10) {printErrorMessageAndExit("Extraneous Argument");
-                            }
-                            i = 1;
-                            print = true;
+                            i = 1;print = true;
+                            if(args[1].equals("-pretty")){i=3; pretty= true;fileName = args[i - 1];}
                             break;
                         case "-textFile":
-                            if (args.length > 11) {printErrorMessageAndExit("Extraneous Argument");
-                            }
-                            i = 2;
-                            write = true;
-                            fileName = args[i - 1];
+                            i = 2; write = true;fileName = args[i - 1];
+                            if(args[2].equals("-print")){i=3; print= true;}
                             break;
                         case "-pretty":
-                            if (args.length > 11) {printErrorMessageAndExit("Extraneous Argument");
-                            }
-                            i = 2;
-                            pretty = true;
-                            fileName = args[i-1];
+                            i = 2;pretty = true;fileName = args[i-1];
+                            if(args[2].equals("-print")){i=3; print= true;}
                             break;
                         default:
                             printErrorMessageAndExit("Invalid Command line Option");
@@ -164,13 +155,23 @@ public class Project3 {
                 }else if (args.length>9){printErrorMessageAndExit("Extraneous Argument");}
 
                 pb = new PhoneBill(args[i]);
+                customerName = pb.customerName;
                 pc = new PhoneCall(args[i+1],args[i+2],args[i+3]+" "+ args[i+4]+" "+args[i+5],args[i+6]+" "+ args[i+7]+" "+args[i+8]);
-
         }
 
         if(print) {printPhoneCall();}
-        else if(write) { // Dump the family tree to the file
-            readWriteFromOrToTextFile();
+        if(write) { // Dump the phoneBill to the file
+            File file= new File(fileName);
+            if(file.exists()) readWriteFromOrToTextFile();
+            else {
+                try {
+                    pb.addPhoneCall(pc);
+                    TextDumper dumper = new TextDumper(file);
+                    dumper.dump(pb);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
             System.exit(0);
         } else if (pretty){
             prettyPrintingToAFile();
@@ -183,17 +184,18 @@ public class Project3 {
      * It describes the Project1 and the classes we will be using for it.
      */
     private static void printReadmeMessage() {
-        System.out.print("This is a README for java Project2 : Storing a Phone Bill in a Text File at Portland State University Summer 2015, created by Kamakshi Nagar.\n" +
+        System.out.print("This is a README for java Project3 : Pretty Printing a Phone Bill in a Text File at Portland State University Summer 2015, created by Kamakshi Nagar.\n" +
                 "The project is to generate a phone bill for the customers by maintaining the record of calls at given time. We enter customer name, phone number and callee's phone number for a given time, we record the call, which can be printed using the -print command.\n" +
                 "There is -textFile Command to read/write from/to a text file respectively.\n" +
-                "We have java files as Project2.java, PhoneBill.java, PhoneCall.java, TextParser.java, TextDumper.java.\n" +
+                "A -pretty command can be used to pretty print the phone bill in a file.\n"+
+                "We have java files as Project3.java,PrettyPrinter.java, PhoneBill.java, PhoneCall.java, TextParser.java, TextDumper.java.\n" +
                 "PhoneBill has Customer name for whom we are generating the Bill and PhoneCall has the callerNumber, calleeNumber, startTime and endTime of call.\n" +
-                "Project2.java is the main file in which command line parsing is done, it has coding for README, print and textFile commands as well as methods to validate phone numbers and date-time as they have specific format.\n");
+                "Project3.java is the main file in which command line parsing is done, it has coding for README, print,textFile and pretty commands.\n");
         System.exit(0);
     }
 
     /**
-     *
+     *This Method add call to Phone Bill and print a phone call to Standard Out.
      *
      */
     private static void printPhoneCall(){
@@ -202,26 +204,31 @@ public class Project3 {
     }
 
     /**
-     *This M
-     *
+     *This Method Parse the text in a textFile a pretty print the Phone Bill
+     * including its calls to a file.
+     * Reading and Writing can throw Parse, File and IO exceptions.
      */
 
     private static void readWriteFromOrToTextFile(){
         try  {
-            TextDumper dumper = new TextDumper(fileName);
-            pb.addPhoneCall(pc);
-            dumper.dump(pb);
-            TextParser parser = new TextParser(fileName);
-            parser.parse();
+                TextParser parser= new TextParser(fileName);
+                AbstractPhoneBill bill = parser.parse();
+                pb=(PhoneBill)bill;
+                String name= pb.customerName;
+                pb.addPhoneCall(pc);
+                if (!customerName.equals(name)){printErrorMessageAndExit("Name Mismatch");}
+                PrettyPrinter pretty = new PrettyPrinter(fileName);
+                pretty.dump(pb);
 
         }catch (FileNotFoundException ex) {
-            System.out.println("** Could not find file " + fileName);
+            System.err.println("** Could not find file " + fileName);
         } catch (ParserException e) {
             System.err.println("Parser Exception: "+ e);
             e.printStackTrace();
         } catch (IOException ex) {
             System.err.println("** IOException while dealing with " + fileName);
         }
+        System.exit(0);
     }
 
     /**
@@ -230,16 +237,22 @@ public class Project3 {
      */
     private static void prettyPrintingToAFile(){
         try {
-            pb.addPhoneCall(pc);
-            PrettyPrinter pretty= null;
+             pb.addPhoneCall(pc);
+            PrettyPrinter pretty;
             if(fileName.equals("-")){
                 PrintWriter out = new PrintWriter(System.out,true);
                 pretty = new PrettyPrinter(out);
             }
             else {File file = new File(fileName);
             if(file.exists()){
-                PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(fileName, true)));
-                pretty = new PrettyPrinter(out);
+                TextParser parser= new TextParser(fileName);
+                AbstractPhoneBill bill = parser.parse();
+                pb=(PhoneBill)bill;
+                String name= pb.customerName;
+                pb.addPhoneCall(pc);
+                if (!customerName.equals(name)){printErrorMessageAndExit("Name Mismatch");}
+                pretty = new PrettyPrinter(fileName);
+                pretty.dump(pb);
             }else{
                 pretty = new PrettyPrinter(file);} }
 
@@ -247,10 +260,14 @@ public class Project3 {
 
         } catch (FileNotFoundException ex) {
             System.err.println("** Could not find file " + fileName);
-        } catch (IOException e) {
+        }catch(ParserException e){
+            System.err.println("Parser Error "+ e.getMessage());
+        }
+        catch (IOException e) {
             System.err.println("** " + e.getMessage());
             e.printStackTrace();
         }
+        System.exit(0);
     }
 
 
