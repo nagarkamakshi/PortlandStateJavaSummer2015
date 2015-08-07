@@ -1,0 +1,59 @@
+.gwt-Button { background: #3498db;
+    background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+    background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+    background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+    background-image: -o-linear-gradient(top, #3498db, #2980b9);
+    background-image: linear-gradient(to bottom, #3498db, #2980b9);
+    border-radius: 25px;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 15px;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;}
+.gwt-Button:hover{
+    background: #3cb0fd;
+    background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+    text-decoration: none;
+}
+
+
+.gwt-TextBox{
+    border:2px solid #456879;
+    border-radius:10px;
+}
+.gwt-Label{
+    color: #3498db;
+    font-weight: bold;
+    display: block;
+    width: 156px;
+    cursor: pointer;
+    padding-right: 6px;
+    padding-bottom: 1px;
+}
+.gwt-ListBox{
+    border:2px solid #456879;
+    border-radius:10px;
+}
+.gwt-HTML{
+    color: #3498db;
+    font-family: Arial;
+}
+.gwt-MenuBar .gwt-MenuItem {
+    cursor: pointer;
+    font-family: Arial;
+    border: none;
+    font-size: 20px;
+    Width: 60px;
+    color:  #ffffff;
+    background: #3498db;
+    background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+    background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+    background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+    background-image: -o-linear-gradient(top, #3498db, #2980b9);
+    background-image: linear-gradient(to bottom, #3498db, #2980b9);
+    border-radius: 25px;
+}

@@ -24,8 +24,6 @@ public class BillPage extends Composite {
 
     public BillPage(){
         initWidget(this.verticalPanel);
-        Label label= new Label("This is a Bill Page");
-        label.setWidth("3");
 
         PingServiceAsync async = GWT.create(PingService.class);
         async.displayPhoneBill(new AsyncCallback<AbstractPhoneBill>() {
@@ -38,14 +36,14 @@ public class BillPage extends Composite {
                 displayPhoneBill(phonebill);
             }
         });
-        this.verticalPanel.add(label);
+       // this.verticalPanel.add(label);
         this.verticalPanel.add(html);
 
     }
     public BillPage(final Date start, final Date end){
         initWidget(this.verticalPanel);
-        final Label label= new Label("This is a Search Bill Page");
-        label.setWidth("3");
+        //final Label label= new Label("This is a Search Bill Page");
+        //label.setWidth("3");
 
         PingServiceAsync async = GWT.create(PingService.class);
         async.displayPhoneBill(new AsyncCallback<AbstractPhoneBill>() {
@@ -57,7 +55,7 @@ public class BillPage extends Composite {
             public void onSuccess(AbstractPhoneBill phonebill) {
 
                 StringBuilder sb = new StringBuilder();
-                sb.append("<h1>Your Phone Bill</h1>");
+                sb.append("<h1><i>Your Phone Bill</i></h1>");
 
                 SortedSet<PhoneCall> sortedTree = new TreeSet<>();
                 sortedTree.addAll(phonebill.getPhoneCalls());
@@ -85,7 +83,7 @@ public class BillPage extends Composite {
             }
         });
 
-        this.verticalPanel.add(label);
+       // this.verticalPanel.add(label);
         this.verticalPanel.add(html);
     }
     private void displayPhoneBill(AbstractPhoneBill abstractPhoneBill){

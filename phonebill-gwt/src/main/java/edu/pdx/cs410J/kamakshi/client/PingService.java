@@ -18,8 +18,6 @@ public interface PingService extends RemoteService {
   /**
    * Returns the a dummy Phone Bill
    */
-   //AbstractPhoneBill ping(String customerName);
     AbstractPhoneBill addPhoneCall(String CustomerName, String caller, String callee, String start, String end);
     AbstractPhoneBill displayPhoneBill();
-  AbstractPhoneBill searchPhoneCall(String customerName,Date start,Date end) throws PhoneBillGwtException;
 }

@@ -1,10 +1,9 @@
 package edu.pdx.cs410J.kamakshi.client;
 
-import com.google.gwt.user.client.Window;
+import com.google.gwt.event.logical.shared.SelectionHandler;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.VerticalPanel;
-import edu.pdx.cs410J.AbstractPhoneBill;
 
 import java.util.Date;
 
@@ -21,17 +20,18 @@ public class MainPage extends Composite {
     public MainPage(){
         initWidget(this.vPanel);
         this.vPanel.setBorderWidth(0);
+        this.vPanel.getElement().getStyle().setBackgroundColor("#E6E6FA");
         this.vPanel.getElement().setAttribute("align", "center");
         this.vPanel.setWidth("600px");
 
 
-        MenuBar menuBar= new MenuBar(this);
-        this.vPanel.add(menuBar);
+        MenuBarPage menuBarPage = new MenuBarPage(this);
+        this.vPanel.add(menuBarPage);
 
         this.vPanel.add(this.contentPanel);
 
-       Image img = new Image("/Images/Vintage_valentine_cards.jpg");
-        img.setWidth("600px");
+       Image img = new Image("/Images/payphone-bill-harrison.jpg");
+        img.setWidth("550px");
 
         this.contentPanel.add(img);
     }
@@ -66,4 +66,8 @@ public class MainPage extends Composite {
         this.contentPanel.add(helpPage);
     }
 
+    public void addSelectionHandler(SelectionHandler<Integer> selectionHandler) {
+
+
+    }
 }

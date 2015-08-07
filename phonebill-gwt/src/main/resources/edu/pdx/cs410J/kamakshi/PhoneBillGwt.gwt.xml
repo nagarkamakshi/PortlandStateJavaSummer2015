@@ -2,6 +2,7 @@
   <inherits name="com.google.gwt.user.User"/>
   <inherits name='com.google.gwt.user.theme.standard.Standard'/>
   <inherits name='edu.pdx.cs410J.Projects'/>
+  <stylesheet src='/mystyles.css' />
   <entry-point class="edu.pdx.cs410J.kamakshi.client.PhoneBillGwt"/>
 
   <servlet path="/ping" class="edu.pdx.cs410J.kamakshi.server.PingServiceImpl"/>

@@ -23,10 +23,10 @@ public class SearchPage extends Composite {
     MainPage mainPage;
 
     TextBox customer = new TextBox();
-    TextBox startTime1 = new TextBox();DatePicker datePicker = new DatePicker();  Button dateBtn= new Button("Cal");
+    TextBox startTime1 = new TextBox();DatePicker datePicker = new DatePicker();  Anchor dateBtn= new Anchor("Cal");
     ListBox startTime2a = new ListBox(); ListBox startTime2b = new ListBox();
     ListBox startTime3 = new ListBox();
-    TextBox endTime1 = new TextBox();DatePicker datePicker2 = new DatePicker();  Button dateBtn2= new Button("Cal");
+    TextBox endTime1 = new TextBox();DatePicker datePicker2 = new DatePicker();  Anchor dateBtn2= new Anchor("Cal");
     ListBox endTime2a = new ListBox();  ListBox endTime2b = new ListBox();
     ListBox endTime3 = new ListBox();
 
@@ -38,7 +38,7 @@ public class SearchPage extends Composite {
         flexTable.setCellSpacing(5);
 
 
-        Label label= new Label("Enter Customer Name And Time");
+        Label label= new HTML("<h2> Search Your Calls </h2>");
         flexTable.setWidget(1,1,label);
         flexTable.getFlexCellFormatter().setColSpan(1, 1, 5);
 
@@ -51,8 +51,9 @@ public class SearchPage extends Composite {
 
         Label label4= new Label("Start Time: ");
         flexTable.setWidget(3,0,label4);
-        startTime1.setWidth("80px"); startTime1.setEnabled(false);
-        dateBtn.setWidth("50px");
+       startTime1.setWidth("80px");
+        startTime1.setEnabled(false);
+       // dateBtn.setWidth("50px");
         dateBtn.addClickHandler(new AddCalClickHandler());
         datePicker.addValueChangeHandler(new ValueChangeHandler<Date>() {
             public void onValueChange(ValueChangeEvent<Date> event) {
@@ -64,11 +65,14 @@ public class SearchPage extends Composite {
         });
         datePicker.setVisible(false);
         String[] num = {"00","01","02","03","04","05","06","07","08","09"};
-        startTime2a.setWidth("50px"); for(String n: num){startTime2a.addItem(n);}for(int i=10;i<13;i++){startTime2a.addItem(String.valueOf(i));}
-        startTime2b.setWidth("50px"); for(String n: num){startTime2b.addItem(n);}
+       // startTime2a.setWidth("50px");
+        for(String n: num){startTime2a.addItem(n);}for(int i=10;i<13;i++){startTime2a.addItem(String.valueOf(i));}
+       // startTime2b.setWidth("50px");
+        for(String n: num){startTime2b.addItem(n);}
         for(int j=10;j<60;j++){startTime2b.addItem(String.valueOf(j));}
 
-        startTime3.setWidth("50px");startTime3.addItem("AM");startTime3.addItem("PM");
+       // startTime3.setWidth("50px");
+        startTime3.addItem("AM");startTime3.addItem("PM");
         flexTable.setWidget(3, 1, startTime1);
         flexTable.setWidget(3,2,dateBtn);flexTable.setWidget(4,1,datePicker);
         flexTable.setWidget(3,3,startTime2a);flexTable.setWidget(3,4,startTime2b);
@@ -80,7 +84,7 @@ public class SearchPage extends Composite {
         endTime1.setWidth("80px"); endTime1.setEnabled(false);
         startTime1.setText(DateTimeFormat.getFormat("MM/dd/yyyy").format(new Date()));
         endTime1.setText(DateTimeFormat.getFormat("MM/dd/yyyy").format(new Date()));
-        dateBtn2.setWidth("50px");
+       // dateBtn2.setWidth("50px");
         dateBtn2.addClickHandler(new AddCal2ClickHandler());
         datePicker2.addValueChangeHandler(new ValueChangeHandler<Date>() {
             public void onValueChange(ValueChangeEvent<Date> event) {
@@ -92,10 +96,12 @@ public class SearchPage extends Composite {
         });
         datePicker2.setVisible(false);
 
-        endTime2a.setWidth("50px");for(String n: num){endTime2a.addItem(n);}for(int i=10;i<13;i++){endTime2a.addItem(String.valueOf(i));}
-        endTime2b.setWidth("50px"); for(String n: num){endTime2b.addItem(n);}
+        //endTime2a.setWidth("50px");
+        for(String n: num){endTime2a.addItem(n);}for(int i=10;i<13;i++){endTime2a.addItem(String.valueOf(i));}
+       // endTime2b.setWidth("50px");
+        for(String n: num){endTime2b.addItem(n);}
         for(int j=10;j<60;j++){endTime2b.addItem(String.valueOf(j));}
-        endTime3.setWidth("50px");
+       // endTime3.setWidth("50px");
         endTime3.addItem("AM");endTime3.addItem("PM");
         flexTable.setWidget(5,1,endTime1);
         flexTable.setWidget(5,2,dateBtn2);flexTable.setWidget(6,1,datePicker2);

@@ -44,49 +44,6 @@ public class PingServiceImpl extends RemoteServiceServlet implements PingService
         return bill ;
     }
 
-    @Override
-    public AbstractPhoneBill searchPhoneCall(String customerName, Date start, Date end) throws PhoneBillGwtException{
-
-        Collection<PhoneCall> call = bill.getPhoneCalls();
-        SortedSet<PhoneCall> sortedTree = new TreeSet<>();
-        sortedTree.addAll(call);
-        Iterator iter = sortedTree.iterator();
-
-        while (iter.hasNext()) {
-            PhoneCall cal = (PhoneCall) iter.next();
-            String b = cal.getStartTimeString();
-            long i = Integer.valueOf( b);
-           // DateTimeFormat dateTimeFormat = DateTimeFormat.getFormat("yyyy-MM-dd hh:mm a");
-           // Date newDate = dateTimeFormat.parse(b);
-
-        }
-
-        /*Collection<AbstractPhoneCall> call = bill.getPhoneCalls();
-        AbstractPhoneCall[] cal= call.toArray(new PhoneCall[call.size()]);
-        String a= start.toString();
-        for(AbstractPhoneCall pc: cal){
-            String b= pc.getStartTimeString();
-            DateTimeFormat dateTimeFormat = DateTimeFormat.getFormat("yyyy-MM-dd hh:mm a");
-           // Date newDate = dateTimeFormat.parse(b);
-
-            /*if(newDate.getTime()>= start.getTime()){
-                bill.addPhoneCall(pc);
-            }
-            else{
-                    throw new PhoneBillGwtException("there is some error while search ");
-            } */
-           // bill.addPhoneCall(pc);
-
-
-
-
-       // Window.alert("call: "+ cal.toString());
-        return bill;
-    }
-
-
-
-
     /**
    * Log unhandled exceptions to standard error
    *

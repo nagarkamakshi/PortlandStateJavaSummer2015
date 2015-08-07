@@ -4,6 +4,9 @@ import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.logical.shared.SelectionEvent;
+import com.google.gwt.event.logical.shared.SelectionHandler;
+import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
@@ -24,6 +27,17 @@ public class PhoneBillGwt implements EntryPoint {
 
         MainPage main = new MainPage();
         RootPanel rootPanel = RootPanel.get();
+        rootPanel.getElement().getStyle().setBackgroundColor("#E6E6FA");
         rootPanel.add(main);
-  }
+
+        History.fireCurrentHistoryState();
+
+        main.addSelectionHandler(new SelectionHandler<Integer>(){
+            public void onSelection(SelectionEvent<Integer> event) {
+                History.newItem("page" + event.getSelectedItem());
+            } });
+
+
+    }
+
 }
