@@ -1,16 +1,19 @@
-.gwt-Button { background: #3498db;
+.gwt-Button {
+    background: #3498db;
     background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
     background-image: -moz-linear-gradient(top, #3498db, #2980b9);
     background-image: -ms-linear-gradient(top, #3498db, #2980b9);
     background-image: -o-linear-gradient(top, #3498db, #2980b9);
     background-image: linear-gradient(to bottom, #3498db, #2980b9);
     border-radius: 25px;
-    font-family: Arial;
+    font-family: Arial, serif;
     color: #ffffff;
     font-size: 15px;
     padding: 10px 20px 10px 20px;
-    text-decoration: none;}
-.gwt-Button:hover{
+    text-decoration: none;
+}
+
+.gwt-Button:hover {
     background: #3cb0fd;
     background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
     background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
@@ -20,12 +23,12 @@
     text-decoration: none;
 }
 
-
-.gwt-TextBox{
-    border:2px solid #456879;
-    border-radius:10px;
+.gwt-TextBox {
+    border: 2px solid #456879;
+    border-radius: 10px;
 }
-.gwt-Label{
+
+.gwt-Label {
     color: #3498db;
     font-weight: bold;
     display: block;
@@ -34,21 +37,23 @@
     padding-right: 6px;
     padding-bottom: 1px;
 }
-.gwt-ListBox{
-    border:2px solid #456879;
-    border-radius:10px;
+
+.gwt-ListBox {
+    border: 2px solid #456879;
+    border-radius: 10px;
 }
-.gwt-HTML{
+
+.gwt-HTML {
     color: #3498db;
-    font-family: Arial;
+    font-family: Arial,serif;;
 }
+
 .gwt-MenuBar .gwt-MenuItem {
     cursor: pointer;
-    font-family: Arial;
-    border: none;
-    font-size: 20px;
-    Width: 60px;
-    color:  #ffffff;
+    font-family: Arial, serif;
+
+    font-size: 15px;
+    color: #ffffff;
     background: #3498db;
     background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
     background-image: -moz-linear-gradient(top, #3498db, #2980b9);
@@ -56,4 +61,25 @@
     background-image: -o-linear-gradient(top, #3498db, #2980b9);
     background-image: linear-gradient(to bottom, #3498db, #2980b9);
     border-radius: 25px;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+}
+
+.gwt-MenuItem .gwt-MenuItem-selected {
+    border: none;
+    background: #3498db;
+}
+
+.gwt-MenuBar .gwt-MenuItem-selected {
+    border: none;
+    background: #3498db;
+}
+
+.gwt-MenuBar {
+    border: none;
+}
+.red_label {
+    color: red;
+    font-size: 10pt;
+    overflow: hidden;
 }
