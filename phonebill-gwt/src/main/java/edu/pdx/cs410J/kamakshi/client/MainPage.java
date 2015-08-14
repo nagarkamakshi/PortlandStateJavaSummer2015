@@ -36,8 +36,15 @@ public class MainPage extends Composite {
         this.vPanel.add(menuBarPage);
 
         this.vPanel.add(this.contentPanel);
+        maintainHistory();
 
+        Image img = new Image("/Images/payphone-bill-harrison.jpg");
+        img.setWidth("600px");
 
+        this.contentPanel.add(img);
+    }
+
+    private void maintainHistory() {
         History.addValueChangeHandler(new ValueChangeHandler<String>() {
             @Override
             public void onValueChange(ValueChangeEvent<String> event) {
@@ -60,11 +67,6 @@ public class MainPage extends Composite {
 
             }
         });
-
-        Image img = new Image("/Images/payphone-bill-harrison.jpg");
-        img.setWidth("600px");
-
-        this.contentPanel.add(img);
     }
 
     public void openCallPage() {

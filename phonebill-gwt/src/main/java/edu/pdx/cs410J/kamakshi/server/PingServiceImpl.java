@@ -29,7 +29,7 @@ public class PingServiceImpl extends RemoteServiceServlet implements PingService
 
     @Override
     public AbstractPhoneBill addPhoneCall(String customerName, String caller, String callee, String start, String end) throws PhoneBillGwtException {
-        if ((bill.getPhoneCalls().size() != 0) && !bill.getCustomer().equals(customerName)) {
+        if ((bill.getPhoneCalls().size() != 0) && !bill.getCustomer().equals(customerName) && !customerName.equals("")) {
             throw new PhoneBillGwtException("Customer name "+ customerName+" does not match " + bill.getCustomer());
         }
 

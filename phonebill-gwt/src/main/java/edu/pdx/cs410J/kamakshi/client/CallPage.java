@@ -61,6 +61,13 @@ public class CallPage extends Composite {
         initWidget(this.verticalPanel);
         this.mainPage = main;
 
+        getAddCallUI();
+
+        this.verticalPanel.add(flexTable);
+
+    }
+
+    private void getAddCallUI() {
         Label label = new HTML("<h2>Make A New Call</h2>");
         flexTable = new FlexTable();
         flexTable.setCellPadding(5);
@@ -218,9 +225,6 @@ public class CallPage extends Composite {
         flexTable.setWidget(11, 1, addCallBtn);
         addCallBtn.addClickHandler(new AddCallClickHandler());
         flexTable.getFlexCellFormatter().setColSpan(11, 1, 5);
-
-        this.verticalPanel.add(flexTable);
-
     }
 
     /**
